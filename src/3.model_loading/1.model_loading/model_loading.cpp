@@ -81,8 +81,11 @@ int main()
     Shader ourShader("1.model_loading.vs", "1.model_loading.fs");
 
     // load models
-    // -----------
-    Model ourModel(FileSystem::getPath("resources/objects/backpack/backpack.obj"));
+    //// -----------
+    //Model backpack(FileSystem::getPath("resources/objects/backpack/backpack.obj"));
+    //Model planet(FileSystem::getPath("resources/objects/planet/planet.obj"));
+     Model backpack(FileSystem::getPath("resources/objects/wall/kotel_wall.obj"));
+    Model planet(FileSystem::getPath("resources/objects/gate/damas_gate.obj"));
 
     
     // draw in wireframe
@@ -121,7 +124,14 @@ int main()
         model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
         model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
         ourShader.setMat4("model", model);
-        ourModel.Draw(ourShader);
+        backpack.Draw(ourShader);
+
+
+      //   glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(10.0f, 10.0f, 0.0f)); // translate it down so it's at the center of the scene
+        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
+        ourShader.setMat4("model", model);
+        planet.Draw(ourShader);
 
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
